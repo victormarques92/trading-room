@@ -2,7 +2,7 @@
 
 Este projeto é uma aplicação de simulação de trading desenvolvida em Next.js com foco em performance, usabilidade e estrutura escalável.
 
-> 💼 Desenvolvido como parte do desafio técnico para vaga de Front-end Sênior (Tech Lead) na **Ebinex**.
+> 💼 Desenvolvido como parte do desafio técnico para vaga de Front-end Sênior (Tech Lead) na **[Ebinex](https://app.ebinex.com/)**.
 
 ---
 
@@ -66,7 +66,7 @@ A estrutura foi cuidadosamente organizada para garantir escalabilidade, reusabil
 
 ```bash
 # 1. Clone o projeto
-git clone https://github.com/seu-usuario/seu-repo.git
+git clone https://github.com/victormarques92/trading-room.git
 cd seu-repo
 
 # 2. Instale as dependências
@@ -83,4 +83,7 @@ yarn dev
 ---
 
 ## 🌍 Deploy
-[🔗 Acessar demo](https://vercel.com/)
+[🔗 Acessar demo](https://trading-room-8fup.vercel.app/)
+\
+\
+![image info](./public/image-devices-readme.png)
