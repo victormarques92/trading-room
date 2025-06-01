@@ -18,8 +18,8 @@ export const TradingViewWidget = ({
   const status = useScript('https://s3.tradingview.com/tv.js');
 
   useEffect(() => {
-    if (status === 'ready' && (window as any).TradingView) {
-      new (window as any).TradingView.widget({
+    if (status === 'ready' && window.TradingView) {
+      new window.TradingView.widget({
         container_id: 'tv_chart_container',
         autosize: true,
         symbol,
