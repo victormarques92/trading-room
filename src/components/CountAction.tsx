@@ -19,7 +19,7 @@ export const CountAction: React.FC<CountActionProps> = ({
   onChange,
   prefix,
   suffix,
-  min = 0,
+  min = 1,
   max,
 }) => {
   const handleDecrement = () => {

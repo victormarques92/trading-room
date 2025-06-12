@@ -1,3 +1,13 @@
+declare global {
+  interface Window {
+    TradingView: {
+      widget: new (
+        options: TradingViewWidgetOptions,
+      ) => TradingViewWidgetInstance;
+    };
+  }
+}
+
 interface TradingViewWidgetOptions {
   container_id: string;
   autosize?: boolean;
@@ -10,10 +20,29 @@ interface TradingViewWidgetOptions {
   toolbar_bg?: string;
   enable_publishing?: boolean;
   hide_side_toolbar?: boolean;
+  onReady?: () => void;
+  onChartReady?: () => void;
+}
+
+interface TradingViewChart {
+  createShape: (
+    position: { time: number },
+    options: {
+      shape: 'arrow_up' | 'arrow_down';
+      text: string;
+      overrides: {
+        color: string;
+        textColor: string;
+        fontSize: number;
+      };
+    },
+  ) => void;
+  removeAllShapes: () => void;
 }
 
 interface TradingViewWidgetInstance {
-  remove?: () => void;
+  onChartReady: (callback: () => void) => void;
+  activeChart: () => TradingViewChart;
 }
 
 interface TradingViewConstructor {

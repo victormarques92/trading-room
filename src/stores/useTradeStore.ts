@@ -3,6 +3,12 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 export interface Operation {
+  takeProfit: any;
+  stopLoss: any;
+  currentPrice: any;
+  entryPrice: any;
+  exitPrice: any;
+  profitLoss: any;
   amount: number;
   createdAt: string;
   expiresAt: number;
@@ -12,6 +18,7 @@ export interface Operation {
 }
 
 export interface ScheduledOrder {
+  price: any;
   amount: number;
   createdAt: string;
   id: string;
@@ -58,6 +65,12 @@ export const useTradeStore = create<TradeStore>()(
           amount,
           createdAt: new Date().toLocaleTimeString('pt-BR'),
           expiresAt,
+          currentPrice: undefined,
+          entryPrice: undefined,
+          exitPrice: undefined,
+          profitLoss: undefined,
+          takeProfit: undefined,
+          stopLoss: undefined,
         };
 
         set(state => ({
@@ -76,6 +89,7 @@ export const useTradeStore = create<TradeStore>()(
           amount,
           targetTimestamp,
           createdAt: new Date().toLocaleTimeString('pt-BR'),
+          price: undefined,
         };
 
         set(state => ({
@@ -99,8 +113,19 @@ export const useTradeStore = create<TradeStore>()(
           id: uuidv4(),
           type: o.type,
           amount: o.amount,
-          createdAt: new Date().toLocaleTimeString('pt-BR'),
+          createdAt: new Date().toLocaleTimeString('pt-BR', {
+            hour12: false,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          }),
           expiresAt: now + 60 * 1000, // duração fixa de 1 min (pode melhorar)
+          entryPrice: 0,
+          currentPrice: 0,
+          exitPrice: 0,
+          profitLoss: 0,
+          takeProfit: 0,
+          stopLoss: 0,
         }));
 
         set(state => ({
